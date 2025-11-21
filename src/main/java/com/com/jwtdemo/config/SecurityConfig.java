@@ -30,6 +30,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authRequest ->
                         authRequest
+                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
                                 // Autenticación y registro
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers("/").permitAll()
