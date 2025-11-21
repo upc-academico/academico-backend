@@ -1,6 +1,5 @@
 package com.com.jwtdemo.model;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -11,24 +10,23 @@ public class Competencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCompetencia;
 
-    @Column(name = "nombreCompetencia", length = 35, nullable = false)
+    @Column(name = "nombreCompetencia")
     private String nombreCompetencia;
-    private Boolean enabled;
 
-    @ManyToOne
-    @JoinColumn(name = "idCursos")   //Validar si no hay problema, sino cambiar
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cursos")
     private Curso curso;
 
-    public Competencia() {
-    }
+    // Constructores
+    public Competencia() {}
 
-    public Competencia(int idCompetencia, String nombreCompetencia, Boolean enabled, Curso curso) {
+    public Competencia(int idCompetencia, String nombreCompetencia, Curso curso) {
         this.idCompetencia = idCompetencia;
         this.nombreCompetencia = nombreCompetencia;
-        this.enabled = enabled;
         this.curso = curso;
     }
 
+    // Getters y Setters
     public int getIdCompetencia() {
         return idCompetencia;
     }
@@ -43,14 +41,6 @@ public class Competencia {
 
     public void setNombreCompetencia(String nombreCompetencia) {
         this.nombreCompetencia = nombreCompetencia;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     }
 
     public Curso getCurso() {

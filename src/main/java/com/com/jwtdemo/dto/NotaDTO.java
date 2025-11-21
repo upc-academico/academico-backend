@@ -17,11 +17,28 @@ public class NotaDTO {
     private String observacion;
     private Boolean enabled;
     private String estadoAcademico;
-
+    private int idCurso; // ⬅️ AGREGAR
+    private String nombreCurso; // ⬅️ AGREGAR
     // Constructores
     public NotaDTO() {}
 
     // Getters y Setters completos
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
+
+    public String getNombreCurso() {
+        return nombreCurso;
+    }
+
+    public void setNombreCurso(String nombreCurso) {
+        this.nombreCurso = nombreCurso;
+    }
+
     public int getIdNota() {
         return idNota;
     }
